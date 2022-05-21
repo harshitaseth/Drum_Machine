@@ -1,14 +1,9 @@
 /*
- * assignment2_drums
- * ECS7012 Music and Audio Programming
- *
- * Second assignment, to create a sequencer-based
+
  * drum machine which plays sampled drum sounds in loops.
  *
  * This code runs on the Bela embedded audio platform (bela.io).
- *
- * Andrew McPherson, Becky Stewart and Victor Zappi
- * 2015-2020
+
  */
 
 #include <iostream>
