@@ -1,14 +1,8 @@
 /*
- * assignment2_drums
- * ECS7012 Music and Audio Programming
- *
- * Second assignment, to create a sequencer-based
+
  * drum machine which plays sampled drum sounds in loops.
  *
  * This code runs on the Bela embedded audio platform (bela.io).
- *
- * Andrew McPherson, Becky Stewart and Victor Zappi
- * 2015-2020
  */
 
 
@@ -172,122 +166,6 @@ void render(BelaContext *context, void *userData)
 		//Reading button input
 		int status_b1 = digitalRead(context, n, gButtonPin1);
 		
-		/* Step 2: use gReadPointer to play a drum sound */
-		//############ Ques2 #####################
-		/*
-		// Copying the samples of drum sound to out and increasing the readpointer
-		if(status_b1 == LOW) {
-			Reading LOW (0) means button was pressed
-			out = gDrumSampleBuffers[1][gReadPointer];
-			gReadPointer += 1;
-				if (gReadPointer > gDrumSampleBufferLengths[1]){
-						gReadPointer = 0;
-				}
-			*/
-
-
-		/* Step 3: use multiple read pointers to play multiple drums */
-		//############# Ques3 #################
-		/*
-				// calling startPlayingDrum() to play two drum sound
-				// startPlayingDrum(1);
-				// startPlayingDrum(2);
-				
-				// Adding the samples of two drum sound and increasing the readpointers
-				// Empty the Drum buffer if readpointer >= buffer length
-				for(int i = 0; i < readpointers_number; i++){
-			
-				
-					if(gDrumBufferForReadPointer[i] >= 0)
-						{
-						gReadPointers[i]++;
-						if(gReadPointers[i] >= gDrumSampleBufferLengths[gDrumBufferForReadPointer[i]]) 
-						{
-							gReadPointers[i] = 0;
-                  		gDrumBufferForReadPointer[i] = -1;
-							}	
-	
-					 out = out + gDrumSampleBuffers[gDrumBufferForReadPointer[i]][gReadPointers[i]];
-			
-						}
-			
-				  }
-	
-		// Turn on LED
-		digitalWriteOnce(context, n, kLedPin, HIGH);
-		}
-		else {
-			// Turn off LED
-			digitalWriteOnce(context, n, kLedPin, LOW);
-		}
-		*/
-			
-		
-		/* Step 4: count samples and decide when to trigger the next event */
-		//############# Ques4 ##################	
-		 /*
-		// Reading button and previous button value to trigger the gIsPlaying value 
-			if(status_b1 == 0 && gPreviousButtonValue != 0) {
-				// Button clicked: is the metronome off?
-				gTriggerButton = 1;
-            	gIsPlaying = !gIsPlaying;
-            	gcountsamples = 0;
-				}
-		
-			// storing last button value to gPreviousButtonValue	
-			gPreviousButtonValue = status_b1;
-		
-			// reading poteniometer input 
-			float input = analogRead(context,  n/2, kInputTempo);
-		
-			// mapping poteniometer input to event intervals between 50-100
-			gEventIntervalMilliseconds = map(input, 0, 3.3/4.096, 50, 1000);
-		
-			// if gIsPlaying is 1, trigger the LED with the change in tempo
-			if(gIsPlaying)
-				{
-			
-					if(gcountsamples >= gEventIntervalMilliseconds * 0.001 * context->audioSampleRate) 
-					{	
-                		startNextEvent();
-                		gcountsamples = 0;
-                		if(gLed == LOW)
-                    		gLed = HIGH;
-                		else
-                    		gLed = LOW;
-                
-            		}
-            		gcountsamples++;
-            		// writing LED output
-            		digitalWriteOnce(context, n, kLedPin, gLed);
-            	
-            		// Adding the samples of two drum sound and increasing the readpointers
-					// Empty the Drum buffer if readpointer >= buffer length
-            		for(int i = 0; i < readpointers_number; i++)
-            		{
-		
-						if(gDrumBufferForReadPointer[i] >= 0)
-						{
-							out = gDrumSampleBuffers[gDrumBufferForReadPointer[i]][gReadPointers[i]];
-							gReadPointers[i]++;
-							if(gReadPointers[i] >= gDrumSampleBufferLengths[gDrumBufferForReadPointer[i]]) 
-							{
-								gReadPointers[i] = 0;
-								gDrumBufferForReadPointer[i] = -1;
-                    
-							}	
-	
-				
-						}
-    				}
-				}
-		
-	*/	
-	
-	
-	
-		/* Step 5: Trigger event and calculate orientation  with accelerometer*/
-		//########### Ques5 #################################
 		// Reading button and previous button value to trigger the gIsPlaying value 
 			if(status_b1 == 0 && gPreviousButtonValue != 0) {
 				// Button clicked: is the metronome off?
